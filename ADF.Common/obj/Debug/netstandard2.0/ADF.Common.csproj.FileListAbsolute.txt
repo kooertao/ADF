@@ -1,9 +1,0 @@
-D:\GithubManager\ADF\ADF.Common\bin\Debug\netstandard2.0\ADF.Common.deps.json
-D:\GithubManager\ADF\ADF.Common\bin\Debug\netstandard2.0\ADF.Common.dll
-D:\GithubManager\ADF\ADF.Common\obj\Debug\netstandard2.0\ADF.Common.AssemblyInfoInputs.cache
-D:\GithubManager\ADF\ADF.Common\obj\Debug\netstandard2.0\ADF.Common.AssemblyInfo.cs
-D:\GithubManager\ADF\ADF.Common\bin\Debug\netstandard2.0\ADF.Common.pdb
-D:\GithubManager\ADF\ADF.Common\obj\Debug\netstandard2.0\ADF.Common.dll
-D:\GithubManager\ADF\ADF.Common\obj\Debug\netstandard2.0\ADF.Common.pdb
-D:\GithubManager\ADF\ADF.Common\obj\Debug\netstandard2.0\ADF.Common.csprojAssemblyReference.cache
-D:\GithubManager\ADF\ADF.Common\obj\Debug\netstandard2.0\ADF.Common.csproj.CoreCompileInputs.cache
