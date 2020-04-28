@@ -24,3 +24,16 @@ D:\GithubManager\ADF\ADF\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.
 D:\GithubManager\ADF\ADF\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\GithubManager\ADF\ADF\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\GithubManager\ADF\ADF\obj\Debug\netcoreapp3.1\ADF.App.csproj.CopyComplete
+D:\GithubManager\ADF\ADF\bin\Debug\netcoreapp3.1\Log4net.config
+D:\GithubManager\ADF\ADF\bin\Debug\netcoreapp3.1\log4net.dll
+D:\GithubManager\ADF\ADF\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+D:\GithubManager\ADF\ADF\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\GithubManager\ADF\ADF\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\GithubManager\ADF\ADF\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Json.dll
+D:\GithubManager\ADF\ADF\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\GithubManager\ADF\ADF\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Physical.dll
+D:\GithubManager\ADF\ADF\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileSystemGlobbing.dll
+D:\GithubManager\ADF\ADF\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+D:\GithubManager\ADF\ADF\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+D:\GithubManager\ADF\ADF\bin\Debug\netcoreapp3.1\ADF.Common.dll
+D:\GithubManager\ADF\ADF\bin\Debug\netcoreapp3.1\ADF.Common.pdb

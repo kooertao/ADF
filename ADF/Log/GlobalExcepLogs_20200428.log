@@ -1,0 +1,7 @@
+2020-04-28 15:55:19,733| 
+RequestResponseLogRequest Data:  QueryData:/api/SalaryCalculate?year=2020
+ BodyData:
+--------------------------------
+2020-04-28 15:55:19,863| 
+RequestResponseLogResponse Data:2020 total income:100w
+--------------------------------

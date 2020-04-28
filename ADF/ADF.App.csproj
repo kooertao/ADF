@@ -8,5 +8,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.3.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ADF.Common\ADF.Common.csproj" />
+  </ItemGroup>
+
 
 </Project>
