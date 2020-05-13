@@ -6,9 +6,11 @@ using ADF.App.Extensions;
 using ADF.App.Filter;
 using ADF.App.Middleware;
 using ADF.Common.Helper;
+using ADF.Core.Model;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -43,6 +45,13 @@ namespace ADF
 
             });
             #endregion
+
+            services.AddDbContext<ADFDbContext>(
+                options =>
+                {
+                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                        providerOptions => providerOptions.EnableRetryOnFailure());//Connection Resiliency
+                });
             services.AddSingleton(new Appsettings(Env.ContentRootPath));
 
             services.AddControllers(o => 
