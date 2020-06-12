@@ -17,7 +17,7 @@ namespace ADF.App.Controllers
         public AccountController(ADFDbContext context)
         {
             this.context = context;
-        }      
+        }
 
         [HttpGet()]
         public async Task<IActionResult> GetFamily(string name)
@@ -40,5 +40,6 @@ namespace ADF.App.Controllers
             await context.SaveChangesAsync();
             return Ok("Create family successfully.");
         }
+
     }
 }
