@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ADF.Core.Model.Entities;
+using ADF.Core.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,11 +13,11 @@ namespace ADF.App.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly ADFDbContext context;
+        private readonly IAccountService _AccountService;
 
-        public AccountController(ADFDbContext context)
+        public AccountController(IAccountService accountService)
         {
-            this.context = context;
+            _AccountService = accountService;
         }
 
         [HttpGet()]
@@ -26,19 +27,31 @@ namespace ADF.App.Controllers
         }
 
         [HttpPost]
-        [Route("family/{name}")]
-        public async Task<IActionResult> CreateFamily([FromRoute]string name)
+        [Route("member/{name}")]
+        public async Task<IActionResult> CreateMember([FromRoute]string name)
         {
             var current = DateTime.Now;
-            var family = new Family()
+            var member = new Member()
             {
                 Name = name,
                 CreateTime = current,
-                LastUpdated = current
+                LastUpdated = current,
+                IsEmployed = true,
+                FamilyName = "Steve family",
+                Age = 30,
+                MemberGen = Core.Model.Enum.Gender.Man
             };
-            context.Families.Add(family);
-            await context.SaveChangesAsync();
-            return Ok("Create family successfully.");
+
+            var bSuccess = await _AccountService.CreateMember(member);
+            if(bSuccess)
+            {
+                return Ok("Create member successfully.");
+            }
+            else
+            {
+                return Ok("failed to create member successfully.");
+            }
+            
         }
 
     }

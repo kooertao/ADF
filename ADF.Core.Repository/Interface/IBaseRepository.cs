@@ -9,7 +9,7 @@ namespace ADF.Core.Repository
     {
         Task<TEntity> Get(int id);
         Task<IEnumerable<TEntity>> GetAll();
-        IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> predicate);
+        Task<TEntity> Get(Expression<Func<TEntity, bool>> predicate);
         void Add(TEntity entity);
         void Delete(TEntity entity);
         void Update(TEntity entity);

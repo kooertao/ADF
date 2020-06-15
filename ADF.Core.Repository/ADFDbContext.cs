@@ -2,7 +2,7 @@
 using ADF.Core.Model.EntityConfiguration;
 using Microsoft.EntityFrameworkCore;
 
-namespace ADF
+namespace ADF.Core.Repository
 {
     /// <summary>
     /// EF Core steps

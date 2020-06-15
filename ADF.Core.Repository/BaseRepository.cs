@@ -27,9 +27,9 @@ namespace ADF.Core.Repository
             return await query.ToListAsync();
         }
 
-        public IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> predicate)
+        public async Task<TEntity> Get(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return await _DbContext.Set<TEntity>().FirstOrDefaultAsync(predicate);
         }
 
         public void Add(TEntity entity)

@@ -7,6 +7,8 @@ using ADF.App.Filter;
 using ADF.App.Middleware;
 using ADF.Common.Helper;
 using ADF.Core.Model;
+using ADF.Core.Repository;
+using ADF.Core.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -58,6 +60,15 @@ namespace ADF
             {
                 o.Filters.Add(typeof(GlobalExceptionsFilter));
             });
+
+            //◊¢»ÎUow“¿¿µ
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            //◊¢»Î∑∫–Õ≤÷¥¢
+            services.AddTransient(typeof(IFamilyRepository), typeof(FamilyRepository));
+            services.AddTransient(typeof(IMemberRepository), typeof(MemberRepository));
+
+            services.AddTransient(typeof(IAccountService), typeof(AccountService));
 
         }
 
