@@ -1,9 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ADF.Core.Model.Contract.Request;
+using ADF.Core.Model.Contract.Response;
 using ADF.Core.Model.Entities;
 using ADF.Core.Repository;
+using AutoMapper;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ADF.Core.Services
 {
@@ -12,13 +14,15 @@ namespace ADF.Core.Services
         private readonly IUnitOfWork _UnitOfWork;
         public IMemberRepository _MemberRepository;
         public IFamilyRepository _FamilyRepository;
+        public IMapper _Mapper;
 
 
-        public AccountService(IUnitOfWork unitOfWork, IMemberRepository memberRepository, IFamilyRepository familyRepository)
+        public AccountService(IUnitOfWork unitOfWork, IMemberRepository memberRepository, IFamilyRepository familyRepository, IMapper mapper)
         {
             _UnitOfWork = unitOfWork;
             _MemberRepository = memberRepository;
             _FamilyRepository = familyRepository;
+            _Mapper = mapper;
         }
 
         public void CreateFamily(Family family)
@@ -26,48 +30,60 @@ namespace ADF.Core.Services
             throw new NotImplementedException();
         }
 
-        public async Task<bool> CreateMember(Member member)
+        public async Task<List<MemberViewModel>> GetAllMembersAsync(string familyName)
         {
-            var currentTime = DateTime.Now;
-            if(!string.IsNullOrWhiteSpace(member.FamilyName))
+            var result = new List<MemberViewModel>();
+            if(string.IsNullOrWhiteSpace(familyName))
             {
-                var family = _FamilyRepository.Get(f => f.Name == member.FamilyName);
-                if(family.Result != null)
+                return null;
+            }
+
+            var family = _FamilyRepository.Get(f => f.Name == familyName, true);
+            if(family.Result != null && family.Result.Members.Count >0)
+            {
+                family.Result.Members.ForEach(m => {
+                    result.Add(_Mapper.Map<MemberViewModel>(m));
+                });                
+            }
+            return  result;
+        }
+
+        public async Task<bool> CreateMemberAsync(string name, CreateMemberRequest request)
+        {
+            var currentTime = DateTime.Now;           
+
+            if (!string.IsNullOrWhiteSpace(request.FamilyName))
+            {
+                var family = _FamilyRepository.Get(f => f.Name == request.FamilyName);
+                var member = new Member()
                 {
-                    _MemberRepository.Add(new Member
-                    {
-                        MemberGen = member.MemberGen,
-                        Age = member.Age,
-                        CreateTime = currentTime,
-                        IsEmployed = member.IsEmployed,
-                        FamilyId = family.Result.Id,
-                        FamilyName = family.Result.Name,
-                        LastUpdated = currentTime,
-                        Name = member.Name
-                    });
+                    Name = name,
+                    CreateTime = currentTime,
+                    LastUpdated = currentTime,
+                    IsEmployed = request.IsEmployed,
+                    FamilyName = request.FamilyName,
+                    Age = request.Age,
+                    MemberGen = request.MemberGen.Equals(Core.Model.Enum.Gender.Man.ToString(), StringComparison.OrdinalIgnoreCase) ?
+                  Core.Model.Enum.Gender.Man : Core.Model.Enum.Gender.Female
+                };
+
+                if (family.Result != null)
+                {  
+                    member.Family = family.Result;
+                    _MemberRepository.Add(member);
                 }
                 else
                 {
                     var newFamily = new Family
                     {
-                        Name = member.FamilyName,
+                        Name = request.FamilyName,
                         CreateTime = currentTime,
                         LastUpdated = currentTime
                     };
                     //Create family
                     _FamilyRepository.Add(newFamily);
-
-                    _MemberRepository.Add(new Member
-                    {
-                        MemberGen = member.MemberGen,
-                        Age = member.Age,
-                        CreateTime = currentTime,
-                        IsEmployed = member.IsEmployed,
-                        Family = newFamily,
-                        FamilyName = newFamily.Name,
-                        LastUpdated = currentTime,
-                        Name = member.Name
-                    });
+                    member.Family = newFamily;
+                    _MemberRepository.Add(member);
                 }
             }
             return await _UnitOfWork.SaveAsync();

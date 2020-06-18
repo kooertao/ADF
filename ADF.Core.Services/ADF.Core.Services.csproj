@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ADF.Core.Model\ADF.Core.Model.csproj" />
     <ProjectReference Include="..\ADF.Core.Repository\ADF.Core.Repository.csproj" />
   </ItemGroup>

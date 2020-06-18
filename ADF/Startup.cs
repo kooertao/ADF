@@ -69,6 +69,7 @@ namespace ADF
             services.AddTransient(typeof(IMemberRepository), typeof(MemberRepository));
 
             services.AddTransient(typeof(IAccountService), typeof(AccountService));
+            services.AddAutoMapperSetup();
 
         }
 

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ADF.Core.Model.Contract;
+using ADF.Core.Model.Contract.Request;
+using ADF.Core.Model.Contract.Response;
 using ADF.Core.Model.Entities;
 using ADF.Core.Services;
 using Microsoft.AspNetCore.Http;
@@ -26,31 +29,31 @@ namespace ADF.App.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        [Route("family/{name}/members")]
+        public async Task<MessageModel<List<MemberViewModel>>> GetMembers([FromRoute]string name)
+        {
+            var results =  await _AccountService.GetAllMembersAsync(name);
+            return new MessageModel<List<MemberViewModel>>()
+            {
+                Success = true,
+                Message = "Success",
+                Response = results
+            };
+        }
+
         [HttpPost]
         [Route("member/{name}")]
-        public async Task<IActionResult> CreateMember([FromRoute]string name)
+        public async Task<MessageModel<string>> CreateMember([FromRoute]string name, [FromBody] CreateMemberRequest request)
         {
-            var current = DateTime.Now;
-            var member = new Member()
-            {
-                Name = name,
-                CreateTime = current,
-                LastUpdated = current,
-                IsEmployed = true,
-                FamilyName = "Steve family",
-                Age = 30,
-                MemberGen = Core.Model.Enum.Gender.Man
-            };
-
-            var bSuccess = await _AccountService.CreateMember(member);
+            var result = new MessageModel<string>();
+            var bSuccess = await _AccountService.CreateMemberAsync(name, request);            
             if(bSuccess)
             {
-                return Ok("Create member successfully.");
+                result.Response = $"Member:{name}";
+                result.Message = "Success";
             }
-            else
-            {
-                return Ok("failed to create member successfully.");
-            }
+            return result;
             
         }
 
