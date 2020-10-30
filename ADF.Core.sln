@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADF.App", "ADF\ADF.App.csproj", "{8D7F54C2-4B8E-4621-A937-A8A7034E6E8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADF.CoreApi", "ADF\ADF.CoreApi.csproj", "{8D7F54C2-4B8E-4621-A937-A8A7034E6E8C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADF.Common", "ADF.Common\ADF.Common.csproj", "{C285EE81-3C24-41FA-8656-C3904798B0A9}"
 EndProject

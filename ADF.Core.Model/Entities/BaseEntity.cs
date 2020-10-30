@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ADF.Core.Model.Entities
+﻿namespace ADF.Core.Model.Entities
 {
     public abstract class BaseEntity
     {
