@@ -20,7 +20,7 @@ namespace ADF.CoreApi.Extensions
             })
             .AddJwtBearer(options => 
             {
-                options.Authority = Appsettings.app(new string[] { "Startup", "IdentityServer4", "AuthrizationUrl"});
+                options.Authority = Appsettings.app(new string[] { "Startup", "IdentityServer4", "AuthorizationUrl"});
                 options.RequireHttpsMetadata = false;
                 options.Audience = Appsettings.app(new string[] { "Startup", "IdentityServer4", "ApiName" });
             })

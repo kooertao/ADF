@@ -34,16 +34,6 @@ namespace ADF
         public void ConfigureServices(IServiceCollection services)
         {
             #region Swagger
-            //services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc("v1", new OpenApiInfo
-            //    {
-            //        Version = "v1",
-            //        Title = "ADF.Core API",
-            //        Description = "Order system api"
-            //    });
-
-            //});
             services.AddSwaggerSetup();
             #endregion
 
@@ -66,6 +56,17 @@ namespace ADF
             services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<IRoleModulePermissionService, RoleModulePermissionService>();
             services.AddAutoMapperSetup();
+            services.AddCors(c => 
+            {
+                c.AddPolicy(Appsettings.app(new string[] { "Startup", "Cors", "PolicyName" }), policy =>
+                {
+                    policy
+                    .SetIsOriginAllowed(host => true)
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials();
+                });
+            });
             //Ids4 setup
             services.AddAuthorizationSetup();
             services.AddAuthenticationIds4Setup();
@@ -99,17 +100,14 @@ namespace ADF
                 app.UseDeveloperExceptionPage();
             }
             #region Swagger
-            //app.UseSwagger();
-            //app.UseSwaggerUI(c =>
-            //{
-            //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "ADFCore V1");
-            //});
             app.UseSwaggerMildd();
             #endregion
-
+            app.UseCors(Appsettings.app(new string[] { "Startup", "Cors", "PolicyName" }));
+            app.UseCookiePolicy();
             app.UseRouting();
 
             app.UseMiddleware<RequestResponseMiddleware>();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
