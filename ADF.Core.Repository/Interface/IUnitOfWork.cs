@@ -1,10 +1,15 @@
-﻿using System;
+﻿using ADF.Core.Data.Interface;
+using System;
 using System.Threading.Tasks;
 
-namespace ADF.Core.Repository
+namespace ADF.Core.Data
 {
     public interface IUnitOfWork : IDisposable
     {
-        Task<bool> SaveAsync();
+        IProductRepository Products { get; }
+        IProductCategoryRepository ProductCategories { get; }
+
+        Task<bool> CommitAsync();
+        bool Commit();
     }
 }

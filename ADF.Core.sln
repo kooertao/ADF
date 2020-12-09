@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADF.Common", "ADF.Common\AD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADF.Core.Model", "ADF.Core.Model\ADF.Core.Model.csproj", "{2F1A42EB-468D-4FBF-919F-278BD34D8C26}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADF.Core.Repository", "ADF.Core.Repository\ADF.Core.Repository.csproj", "{DCF9B61B-3196-45F4-8488-FB594B25E287}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADF.Core.Data", "ADF.Core.Repository\ADF.Core.Data.csproj", "{DCF9B61B-3196-45F4-8488-FB594B25E287}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADF.Core.Services", "ADF.Core.Services\ADF.Core.Services.csproj", "{B0F01060-D6C1-47C5-A473-D4CE91C1AD82}"
 EndProject

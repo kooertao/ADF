@@ -20,14 +20,13 @@ namespace ADF.CoreApi.Extensions
 
             //Option1: [Authorize(Roles="Admin,System")]
 
-            //Option2:[Authorize(Policy = "Admin")]
-            //services.AddAuthorization(options =>
-            //{
-            //    options.AddPolicy("Client", policy => policy.RequireRole("Client").Build());
-            //    options.AddPolicy("Admin", policy => policy.RequireRole("Admin").Build());
-            //    options.AddPolicy("SystemOrAdmin", policy => policy.RequireRole("Admin", "System"));
-            //    options.AddPolicy("A_S_O", policy => policy.RequireRole("Admin", "Ssytem", "Others"));
-            //});
+            // Option2:[Authorize(Policy = "Admin")]
+            //TODO:Replace role id with name
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequireUserRole", policy => policy.RequireRole("1"));
+                options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("1","2","3"));
+            });
 
             //Option3:Based on permission
             //var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(AppSecretConfig.Audience_Secret_String));
@@ -51,7 +50,7 @@ namespace ADF.CoreApi.Extensions
             //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             //services.AddScoped<IAuthorizationHandler, PermissionHandler>();
             //services.AddSingleton(permissionRequirement);
-            
+
         }
     }
 }

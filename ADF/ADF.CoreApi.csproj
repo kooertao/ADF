@@ -18,6 +18,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.0-preview1.19506.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.0-preview1-19509-03" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.3.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="6.0.1" />
   </ItemGroup>
@@ -25,7 +27,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ADF.Common\ADF.Common.csproj" />
     <ProjectReference Include="..\ADF.Core.Model\ADF.Core.Model.csproj" />
-    <ProjectReference Include="..\ADF.Core.Repository\ADF.Core.Repository.csproj" />
+    <ProjectReference Include="..\ADF.Core.Repository\ADF.Core.Data.csproj" />
     <ProjectReference Include="..\ADF.Core.Services\ADF.Core.Services.csproj" />
   </ItemGroup>
 

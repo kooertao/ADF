@@ -2,7 +2,7 @@ using ADF.App.Extensions;
 using ADF.App.Filter;
 using ADF.App.Middleware;
 using ADF.Common.Helper;
-using ADF.Core.Repository;
+using ADF.Core.Data;
 using ADF.Core.Services;
 using ADF.Core.Services.Interface;
 using ADF.CoreApi.Extensions;
@@ -50,11 +50,12 @@ namespace ADF
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             //×¢Èë·ºÐÍ²Ö´¢
-            services.AddTransient(typeof(IFamilyRepository), typeof(FamilyRepository));
-            services.AddTransient(typeof(IMemberRepository), typeof(MemberRepository));
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IService<>), typeof(Service<>));
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IProductCategoryService, ProductCategoryService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            services.AddTransient<IAccountService, AccountService>();
-            services.AddTransient<IRoleModulePermissionService, RoleModulePermissionService>();
             services.AddAutoMapperSetup();
             services.AddCors(c => 
             {

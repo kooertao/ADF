@@ -1,5 +1,5 @@
-﻿using ADF.Core.Model.Contract.Response;
-using ADF.Core.Model.Entities;
+﻿using ADF.Core.Model.Entities;
+using ADF.CoreApi.DTOs;
 using AutoMapper;
 
 namespace ADF.App.AutoMapper
@@ -8,8 +8,17 @@ namespace ADF.App.AutoMapper
     {
         public CustomProfile()
         {
-            CreateMap<Member, MemberViewModel>()
-                .ForMember(d => d.MemberGen, opt => opt.MapFrom(s => s.MemberGen.ToString()));
+            CreateMap<ProductCategory, ProductCategoryDto>();
+            CreateMap<ProductCategoryDto, ProductCategory>();
+
+            CreateMap<ProductCategory, ProductCategoryWithProductDto>();
+            CreateMap<ProductCategoryWithProductDto, ProductCategory>();
+
+            CreateMap<Product, ProductDto>();
+            CreateMap<ProductDto, Product>();
+
+            CreateMap<Product, ProductWithCategoryDto>();
+            CreateMap<ProductWithCategoryDto, Product>();
         }
     }
 }

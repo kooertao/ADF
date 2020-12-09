@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ADF.Core.Model\ADF.Core.Model.csproj" />
-    <ProjectReference Include="..\ADF.Core.Repository\ADF.Core.Repository.csproj" />
+    <ProjectReference Include="..\ADF.Core.Repository\ADF.Core.Data.csproj" />
   </ItemGroup>
 
 </Project>
