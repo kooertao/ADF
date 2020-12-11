@@ -1,6 +1,6 @@
 ﻿using ADF.Core.Model.Entities;
 using ADF.Core.Services.Interface;
-using ADF.CoreApi.DTOs;
+using ADF.CoreApi.DTO;
 using ADF.CoreApi.Filter;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;

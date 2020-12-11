@@ -1,4 +1,5 @@
 ﻿using ADF.Core.Model.Entities;
+using ADF.CoreApi.DTO;
 using ADF.CoreApi.DTOs;
 using AutoMapper;
 
@@ -19,6 +20,12 @@ namespace ADF.App.AutoMapper
 
             CreateMap<Product, ProductWithCategoryDto>();
             CreateMap<ProductWithCategoryDto, Product>();
+
+            CreateMap<Order, OrderWithDetailsDto>();
+            CreateMap<OrderWithDetailsDto, Order>();
+
+            CreateMap<OrderDetail, OrderDetailsDto>();
+            CreateMap<OrderDetailsDto, OrderDetail>();
         }
     }
 }

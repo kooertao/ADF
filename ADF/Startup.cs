@@ -3,6 +3,7 @@ using ADF.App.Filter;
 using ADF.App.Middleware;
 using ADF.Common.Helper;
 using ADF.Core.Data;
+using ADF.Core.Data.Interface;
 using ADF.Core.Services;
 using ADF.Core.Services.Interface;
 using ADF.CoreApi.Extensions;
@@ -45,13 +46,19 @@ namespace ADF
                 });
             services.AddSingleton(new Appsettings(Env.ContentRootPath));
 
+            services.AddTransient<IDatabaseInitializer, DatabaseInitializer>();
 
             //◊¢»ÎUow“¿¿µ
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             //◊¢»Î∑∫–Õ≤÷¥¢
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IOrderRepository), typeof(OrderRepository));
+            services.AddScoped(typeof(IProductCategoryRepository), typeof(ProductCategoryRepository));
+            services.AddScoped(typeof(IProductRepository), typeof(ProductRepository));
+
             services.AddScoped(typeof(IService<>), typeof(Service<>));
+            services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IProductCategoryService, ProductCategoryService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();

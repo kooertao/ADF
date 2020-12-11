@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ADF.Core.Data.Migrations
 {
-    public partial class ADFinitial : Migration
+    public partial class ADFInit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -60,8 +60,6 @@ namespace ADF.Core.Data.Migrations
                     CreatedDate = table.Column<DateTime>(nullable: false),
                     Discount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Comments = table.Column<string>(maxLength: 500, nullable: true),
-                    DateCreated = table.Column<DateTime>(nullable: false),
-                    DateModified = table.Column<DateTime>(nullable: false),
                     CustomerId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>

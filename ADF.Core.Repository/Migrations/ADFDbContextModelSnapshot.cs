@@ -92,12 +92,6 @@ namespace ADF.Core.Data.Migrations
                     b.Property<long>("CustomerId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateModified")
-                        .HasColumnType("datetime2");
-
                     b.Property<decimal>("Discount")
                         .HasColumnType("decimal(18,2)");
 

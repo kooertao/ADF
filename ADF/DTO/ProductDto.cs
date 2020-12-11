@@ -4,16 +4,16 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ADF.CoreApi.DTOs
+namespace ADF.CoreApi.DTO
 {
     public class ProductDto
     {
         public int Id { get; set; }
-        [Required(ErrorMessage ="{0} alanı gereklidir.")]
+        [Required(ErrorMessage ="Name is required")]
         public string Name { get; set; }
-       [Range(1,int.MaxValue,ErrorMessage ="{0} alanı 1den büyük olmalıdır.")]
+       [Range(1,int.MaxValue,ErrorMessage ="Invalid stock")]
         public int Stock { get; set; }
-        [Range(1, double.MaxValue, ErrorMessage = "{0} alanı 1den büyük olmalıdır.")]
+        [Range(1, double.MaxValue, ErrorMessage = "Invalid price")]
         public decimal Price { get; set; }
         public int CategoryId { get; set; }
     }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ADF.Core.Data.Migrations
 {
     [DbContext(typeof(ADFDbContext))]
-    [Migration("20201209083056_ADFinitial")]
-    partial class ADFinitial
+    [Migration("20201210075903_ADFInit")]
+    partial class ADFInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -93,12 +93,6 @@ namespace ADF.Core.Data.Migrations
 
                     b.Property<long>("CustomerId")
                         .HasColumnType("bigint");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateModified")
-                        .HasColumnType("datetime2");
 
                     b.Property<decimal>("Discount")
                         .HasColumnType("decimal(18,2)");

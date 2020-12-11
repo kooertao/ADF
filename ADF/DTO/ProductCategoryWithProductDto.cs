@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ADF.CoreApi.DTOs
+namespace ADF.CoreApi.DTO
 {
     public class ProductCategoryWithProductDto:ProductCategoryDto
     {

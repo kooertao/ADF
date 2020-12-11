@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ADF.CoreApi.DTOs
+namespace ADF.CoreApi.DTO
 {
     public class ProductCategoryDto
     {
